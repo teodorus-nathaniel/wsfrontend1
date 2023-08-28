@@ -79,6 +79,35 @@ main h1 {
   min-width: 250px;
   max-width: 300px;
   overflow: hidden;
+  position: relative;
+}
+
+.product .heart-button {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+
+  background-color: transparent;
+  color: gray;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  border: 1px solid gray;
+
+  opacity: 0;
+  cursor: pointer;
+  transition: opacity 300ms;
+}
+
+.product .heart-button.active {
+  color: red;
+  border: 1px solid red;
+}
+
+.product:hover .heart-button {
+  opacity: 1;
 }
 
 .product .product-image img {

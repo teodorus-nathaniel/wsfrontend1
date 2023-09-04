@@ -1,4 +1,40 @@
 'use strict'
+// import & export
+import merchandise, { fish, goat, sheep } from './moduleA.js'
+import { getData } from './utils.js'
+// import Swiper JS
+import Swiper from 'swiper'
+import { Navigation, Pagination } from 'swiper/modules'
+// import Swiper styles
+import 'swiper/css'
+import 'swiper/css/navigation'
+import 'swiper/css/pagination'
+
+const swiper = new Swiper('.swiper', {
+  modules: [Navigation, Pagination],
+  // Optional parameters
+  direction: 'horizontal',
+  loop: true,
+
+  // If we need pagination
+  pagination: {
+    el: '.swiper-pagination',
+  },
+
+  // Navigation arrows
+  navigation: {
+    nextEl: '.swiper-button-next',
+    prevEl: '.swiper-button-prev',
+  },
+
+  // And if we need scrollbar
+  scrollbar: {
+    el: '.swiper-scrollbar',
+  },
+})
+// import merchandise from './moduleA.js'
+console.log(fish, goat, merchandise, sheep)
+
 console.log('script connected')
 
 // const logo = document.getElementById('logo')
@@ -15,76 +51,8 @@ console.log('script connected')
 
 // console.log(num + numb)
 
-const productList = document.getElementById('product-list')
-// console.log(productList, productList.innerHTML)
-// productList.innerHTML = product.innerHTML + 'asdfasdfs'
 const sum = 5 + 10
 
-// promise => asynchronous programming
-// then & catch
-// async & await => cara yang lebih baru
-async function getData(page, search) {
-  console.log('start get data')
-
-  const limit = 5
-  const skip = (page - 1) * limit
-  // (page - 1) * limit
-  // 1 => 0
-  // 2 => 5
-  // 3 => 10
-  // 4 => 15
-
-  let apiUrl = `https://dummyjson.com/products?limit=${limit}&skip=${skip}`
-  if (search) {
-    apiUrl = `https://dummyjson.com/products/search?q=${search}`
-  }
-
-  const response = await fetch(apiUrl)
-  const data = await response.json()
-  const products = data.products
-  console.log(products)
-
-  productList.innerHTML = ''
-  for (let i = 0; i < products.length; i++) {
-    const currentProduct = products[i]
-    productList.innerHTML += `<div class="product">
-  <!-- HEART BUTTON -->
-  <button class="heart-button">
-    <span class="material-symbols-outlined">favorite</span>
-  </button>
-  
-  <!-- IMAGE -->
-  <div class="product-image">
-    <img
-      src="${currentProduct.thumbnail}"
-      alt=""
-    />
-  </div>
-  <!-- PRODUCT DETAIL -->
-  <div class="product-detail">
-    <span>${currentProduct.title}</span>
-    <span>$${currentProduct.price}</span>
-    <div class="product-info">
-      <div class="product-rating">
-        <span class="material-symbols-outlined">star</span>
-        <span>${currentProduct.rating}</span>
-      </div>
-      <span>Stok ${currentProduct.stock}</span>
-    </div>
-  </div>
-  </div>`
-  }
-
-  const heartButtons = document.getElementsByClassName('heart-button')
-  for (let i = 0; i < heartButtons.length; i++) {
-    const button = heartButtons[i]
-    function handleClick() {
-      console.log('toggling')
-      button.classList.toggle('active')
-    }
-    button.addEventListener('click', handleClick)
-  }
-}
 console.log('above get data')
 let currentPage = 1
 getData(currentPage)

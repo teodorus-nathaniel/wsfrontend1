@@ -1,0 +1,13 @@
+#root {
+  max-width: 850px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.notes-container {
+  margin-top: 24px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 16px;
+}

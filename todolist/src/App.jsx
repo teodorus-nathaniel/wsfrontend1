@@ -17,7 +17,16 @@ function App() {
   ])
 
   const handleClick = () => {
-    setNotes([...notes, { text: 'new data', date: 'new date' }])
+    // const newNotes = [...notes]
+    // newNotes.push({ text: 'New Note', date: '23 Agustus 2023' })
+    const newNotes = [...notes, { text: 'New Note', date: '23 Agustus 2023' }]
+
+    // const arr = [1, 2, 3]
+    // const newArr = [arr] // [[1, 2, 3]]
+    // const newArr = [...arr] // [1, 2, 3]
+    // const newArr = [...arr, 4] // [1, 2, 3, 4]
+
+    setNotes(newNotes)
   }
 
   return (
